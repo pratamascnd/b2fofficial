@@ -171,7 +171,11 @@
                                 />
                             </div>
                             <span class="profile-username">
-                                <span class="fw-bold">Super Admin</span>
+                                <span class="fw-bold">
+                                    @if (Auth::check())
+                                        {{ Auth::user()->name ?? 'AdminFactory' }}
+                                    @endif
+                                </span>
                             </span>
                         </a>
                     </li>

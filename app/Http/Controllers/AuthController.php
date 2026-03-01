@@ -47,7 +47,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken(); // CSRF Protection
-        return redirect()->route('auth.login-page');
+        return redirect()->route('login');
     }
 
     public function errors() {
