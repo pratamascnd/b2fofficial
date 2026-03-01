@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\BrandPartner;
 use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\GalleryDetail;
 use App\Models\News;
 use App\Models\Service;
 use App\Models\Streamer;
@@ -19,6 +20,9 @@ class LandingPageController extends Controller
         $service = Service::get();
         $brand_partner = BrandPartner::get();
         $contact = Contact::first();
+        $countProject = Gallery::count();
+        $countImage   = GalleryDetail::count(); 
+        $countStreamer = Streamer::count();
         
         // Ambil data gallery beserta foto-fotonya, urutkan dari yang terbaru
         $galleries = Gallery::with('details')->orderBy('project_date', 'DESC')->get();
@@ -26,7 +30,7 @@ class LandingPageController extends Controller
         // Ambil daftar tahun unik untuk filter Isotope
         $years = Gallery::select('year')->distinct()->orderBy('year', 'DESC')->get();
 
-        return view("landing-page.index", compact('about', 'service', 'brand_partner', 'galleries', 'years', 'contact'));
+        return view("landing-page.index", compact('about', 'service', 'brand_partner', 'galleries', 'years', 'contact', 'countProject', 'countImage', 'countStreamer'));
     }
 
     public function news()

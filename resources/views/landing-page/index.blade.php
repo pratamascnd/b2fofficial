@@ -156,35 +156,49 @@
 <section id="stats" class="stats section light-background">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 justify-content-center">
+            
+            {{-- Projects Count --}}
             <div class="col-lg-3 col-md-6">
-                <div class="stats-item d-flex align-items-center justify-content-center w-100 h-100" >
+                <div class="stats-item d-flex align-items-center justify-content-center w-100 h-100">
                     <i class="bi bi-journal-richtext color-orange shrink-0 me-3"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="777" data-purecounter-duration="1" class="purecounter d-block"></span>
+                        <span data-purecounter-start="0" 
+                              data-purecounter-end="{{ $countProject }}" 
+                              data-purecounter-duration="1" 
+                              class="purecounter d-block"></span>
                         <p class="mb-0">Projects</p>
                     </div>
                 </div>
             </div>
 
+            {{-- Image Count --}}
             <div class="col-lg-3 col-md-6">
-                <div class="stats-item d-flex align-items-center justify-content-center w-100 h-100" >
+                <div class="stats-item d-flex align-items-center justify-content-center w-100 h-100">
                     <i class="bi bi-image color-orange shrink-0 me-3"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="1080" data-purecounter-duration="1" class="purecounter d-block"></span>
-                        <p class="mb-0">Image</p>
+                        <span data-purecounter-start="0" 
+                              data-purecounter-end="{{ $countImage }}" 
+                              data-purecounter-duration="1" 
+                              class="purecounter d-block"></span>
+                        <p class="mb-0">Images</p>
                     </div>
                 </div>
             </div>
 
+            {{-- Streamer Count --}}
             <div class="col-lg-3 col-md-6">
-                <div class="stats-item d-flex align-items-center justify-content-center w-100 h-100" >
+                <div class="stats-item d-flex align-items-center justify-content-center w-100 h-100">
                     <i class="bi bi-people color-pink shrink-0 me-3"></i>
                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="77" data-purecounter-duration="1" class="purecounter d-block" ></span>
-                        <p class="mb-0">Streamer</p>
+                        <span data-purecounter-start="0" 
+                              data-purecounter-end="{{ $countStreamer }}" 
+                              data-purecounter-duration="1" 
+                              class="purecounter d-block"></span>
+                        <p class="mb-0">Streamers</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
