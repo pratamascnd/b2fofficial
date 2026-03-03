@@ -4,7 +4,18 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LandingPageController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/migrate-db', function () {
+    try {
+        // Menjalankan migrasi dengan flag --force (wajib di production)
+        Artisan::call('migrate', ["--force" => true]);
+        return "Database migrated successfully! <br><pre>" . Artisan::output() . "</pre>";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
 
 // B2F LANDING PAGE ROUTE
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page.index');
