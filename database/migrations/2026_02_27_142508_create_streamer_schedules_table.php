@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tstreamer_schedule', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('streamer_id');
-            $table->foreign('streamer_id')->references('id')->on('tstreamer')->onDelete('cascade');
-            
-            $table->date('date');         // Tanggal spesifik
-            $table->time('start_time')->nullable(); // Jam mulai
-            $table->string('agenda');      // Judul Game/Kegiatan
-            $table->enum('status', ['streaming', 'off_day'])->default('streaming');
-            
-            $table->timestamps();
-        });
+        $table->uuid('id')->primary(); 
+        
+        $table->foreignUuid('streamer_id')->constrained('tstreamer')->onDelete('cascade');
+        
+        $table->date('date');
+        $table->time('start_time')->nullable();
+        $table->string('agenda');
+        $table->enum('status', ['streaming', 'off_day'])->default('streaming');
+        
+        $table->timestamps();
+    });
     }
 
     /**

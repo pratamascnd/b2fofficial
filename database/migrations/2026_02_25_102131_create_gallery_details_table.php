@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tgallery_detail', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('gallery_id');
-            $table->foreign('gallery_id')->references('id')->on('tgallery')->onDelete('cascade');
-            $table->text('image');
-            $table->timestamps();
-        });
+        $table->uuid('id')->primary(); 
+        
+        $table->foreignUuid('gallery_id')->constrained('tgallery')->onDelete('cascade');
+        
+        $table->text('image');
+        $table->timestamps();
+    });
     }
 
     /**

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tstreamer', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->text('image');
             $table->string('name');
             $table->string('full_name');

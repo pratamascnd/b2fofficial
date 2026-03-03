@@ -3,20 +3,19 @@
 namespace App\Models;
 
 // Import class yang dibutuhkan untuk Autentikasi
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
-    // Pastikan mengarah ke tabel kustom kamu
+    use HasUuids;
     protected $table = 'tuser';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
-    /**
-     * Atribut yang dapat diisi (Mass Assignment)
-     */
     protected $fillable = [
         'name',
         'email',
@@ -24,19 +23,13 @@ class User extends Authenticatable
         'role',
     ];
 
-    /**
-     * Atribut yang harus disembunyikan saat serialisasi (Keamanan)
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Casting tipe data
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed', // Laravel 10+ otomatis menghandle hashing
+        'password' => 'hashed', 
     ];
 }

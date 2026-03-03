@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tgallery', function (Blueprint $table) {
-           $table->id();
+            $table->uuid('id')->primary();
             $table->string('title');
             $table->date('project_date');
             $table->string('year');

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("tabout", function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->text("front_pic");
             $table->text("video_link");
             $table->text("about_pic");
